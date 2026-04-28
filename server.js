@@ -8,7 +8,7 @@ const testController = require("./controllers/test-jwt")
 const authController = require('./controllers/auth')
 const userController = require('./controllers/user')
 const verifyJwt = require('./middlewares/verify-jwt')
-
+const hootsRouter = require("./controllers/hoots.js");
 require('./db/connection')
 
 app.use(cors());
@@ -20,6 +20,7 @@ app.use('/auth', authController)
 
 app.use(verifyJwt)  // Authorization check
 app.use('/users', userController)
+app.use('/hoots', hootsRouter)
 
 app.listen(3000, () => {
   console.log('The express app is ready!');
